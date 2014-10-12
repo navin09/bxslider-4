@@ -88,7 +88,7 @@
 		onSlideNext: function() {},
 		onSlidePrev: function() {},
 		onSliderResize: function() {}
-	};
+	}
 
 	$.fn.bxSlider = function(options){
 
@@ -96,7 +96,7 @@
 
 		// support mutltiple elements
 		if(this.length > 1){
-			this.each(function(){$(this).bxSlider(options);});
+			this.each(function(){$(this).bxSlider(options)});
 			return this;
 		}
 
@@ -137,7 +137,7 @@
 			// if random start, set the startSlide setting to random number
 			if(slider.settings.randomStart) slider.settings.startSlide = Math.floor(Math.random() * slider.children.length);
 			// store active slide information
-			slider.active = { index: slider.settings.startSlide };
+			slider.active = { index: slider.settings.startSlide }
 			// store if the slider is in carousel mode (displaying / moving multiple slides)
 			slider.carousel = slider.settings.minSlides > 1 || slider.settings.maxSlides > 1;
 			// if carousel, force preloadImages = 'all'
@@ -180,8 +180,8 @@
 			
 			// Validate zoom options
 			slider.settings.fadeType = (slider.settings.fadeType == 'zoom') ? slider.settings.fadeType : 'normal';
-			slider.settings.zoomDuration = parseInt(slider.settings.zoomDuration);
-			slider.settings.zoomToSize = isNaN(parseFloat(slider.settings.zoomToSize))? 2 : parseFloat(slider.settings.zoomToSize);
+			slider.settings.zoomDuration = isNaN(parseInt(slider.settings.zoomDuration)) ? 1 : parseInt(slider.settings.zoomDuration);
+			slider.settings.zoomToSize = isNaN(parseFloat(slider.settings.zoomToSize)) ? 2 : parseFloat(slider.settings.zoomToSize);
 			if(!(slider.settings.zoomToSize > 1 && slider.settings.zoomToSize <= 2)) {
 				// Set default scale size if setting is not within expected range
 				slider.settings.zoomToSize = 2;
@@ -189,7 +189,7 @@
 			
 			// perform all DOM / CSS modifications
 			setup();
-		};
+		}
 
 		/**
 		 * Performs all DOM and CSS modifications
@@ -290,7 +290,7 @@
 			}
 			// preload all images, then perform final DOM / CSS modifications that depend on images being loaded
 			loadElements(preloadSelector, start);
-		};
+		}
 
 		var loadElements = function(selector, callback){
 			var total = selector.find('img, iframe').length;
@@ -306,7 +306,7 @@
 				  if(this.complete) $(this).load();
 				});
 			});
-		};
+		}
 
 		/**
 		 * Start the slider
@@ -345,7 +345,7 @@
 			if (slider.settings.controls) updateDirectionControls();
 			// if touchEnabled is true, setup the touch events
 			if (slider.settings.touchEnabled && !slider.settings.ticker) initTouch();
-		};
+		}
 
 		/**
 		 * Returns the calculated height of the viewport, used to determine either adaptiveHeight or the maxHeight value
@@ -368,7 +368,7 @@
 					// add the current slide to the children
 					children = slider.children.eq(currentIndex);
 					// cycle through the remaining "showing" slides
-					for (var i = 1; i <= slider.settings.maxSlides - 1; i++){
+					for (i = 1; i <= slider.settings.maxSlides - 1; i++){
 						// if looped back to the start
 						if(currentIndex + i >= slider.children.length){
 							children = children.add(slider.children.eq(i - 1));
@@ -402,7 +402,7 @@
 			}
 
 			return height;
-		};
+		}
 
 		/**
 		 * Returns the calculated width to be used for the outer wrapper / viewport
@@ -417,7 +417,7 @@
 				}
 			}
 			return width;
-		};
+		}
 
 		/**
 		 * Returns the calculated width to be applied to each slide
@@ -441,7 +441,7 @@
 				}
 			}
 			return newElWidth;
-		};
+		}
 
 		/**
 		 * Returns the number of slides currently visible in the viewport (includes partially visible slides)
@@ -466,7 +466,7 @@
 				slidesShowing = slider.settings.minSlides;
 			}
 			return slidesShowing;
-		};
+		}
 
 		/**
 		 * Returns the number of pages (one full viewport of slides is one "page")
@@ -480,7 +480,7 @@
 				}else{
 					// use a while loop to determine pages
 					var breakPoint = 0;
-					var counter = 0;
+					var counter = 0
 					// when breakpoint goes above children length, counter is the number of pages
 					while (breakPoint < slider.children.length){
 						++pagerQty;
@@ -493,7 +493,7 @@
 				pagerQty = Math.ceil(slider.children.length / getNumberSlidesShowing());
 			}
 			return pagerQty;
-		};
+		}
 
 		/**
 		 * Returns the number of indivual slides by which to shift the slider
@@ -505,7 +505,7 @@
 			}
 			// if moveSlides is 0 (auto)
 			return getNumberSlidesShowing();
-		};
+		}
 
 		/**
 		 * Sets the slider's (el) left or top position
@@ -538,7 +538,7 @@
 					else if (slider.settings.mode == 'vertical') setPositionProperty(-position.top, 'reset', 0);
 				}
 			}
-		};
+		}
 
 		/**
 		 * Sets the el's animating property position (which in turn will sometimes animate el).
@@ -1182,9 +1182,7 @@
 						cssProp['-' + slider.cssPrefix + '-transform'] = cssProp['transform'];
 					}
 					cssProp['transition'] = 'transform ' + slider.settings.zoomDuration + 's ease-in-out';
-					slider.children.each(function(){
-						slider.children.filter(':visible').fadeOut(slider.settings.speed).css(cssProp);						
-					});
+					slider.children.filter(':visible').fadeOut(slider.settings.speed).css(cssProp);
 				} else {
 					slider.children.filter(':visible').fadeOut(slider.settings.speed).css({zIndex: 0});
 				}
@@ -1252,7 +1250,7 @@
 					setPositionProperty(value, 'slide', slider.settings.speed);
 				}
 			}
-		};
+		}
 
 		/**
 		 * Transitions to the next slide in the show
@@ -1262,7 +1260,7 @@
 			if (!slider.settings.infiniteLoop && slider.active.last) return;
 			var pagerIndex = parseInt(slider.active.index) + 1;
 			el.goToSlide(pagerIndex, 'next');
-		};
+		}
 
 		/**
 		 * Transitions to the prev slide in the show
@@ -1272,7 +1270,7 @@
 			if (!slider.settings.infiniteLoop && slider.active.index == 0) return;
 			var pagerIndex = parseInt(slider.active.index) - 1;
 			el.goToSlide(pagerIndex, 'prev');
-		};
+		}
 
 		/**
 		 * Starts the auto show
@@ -1289,7 +1287,7 @@
 			}, slider.settings.pause);
 			// if auto controls are displayed and preventControlUpdate is not true
 			if (slider.settings.autoControls && preventControlUpdate != true) updateAutoControls('stop');
-		};
+		}
 
 		/**
 		 * Stops the auto show
@@ -1305,28 +1303,28 @@
 			slider.interval = null;
 			// if auto controls are displayed and preventControlUpdate is not true
 			if (slider.settings.autoControls && preventControlUpdate != true) updateAutoControls('start');
-		};
+		}
 
 		/**
 		 * Returns current slide index (zero-based)
 		 */
 		el.getCurrentSlide = function(){
 			return slider.active.index;
-		};
+		}
 
 		/**
 		 * Returns current slide element
 		 */
 		el.getCurrentSlideElement = function(){
 			return slider.children.eq(slider.active.index);
-		};
+		}
 
 		/**
 		 * Returns number of slides in show
 		 */
 		el.getSlideCount = function(){
 			return slider.children.length;
-		};
+		}
 
 		/**
 		 * Update all dynamic slider elements
@@ -1348,7 +1346,7 @@
 				populatePager();
 				updatePagerActive(slider.active.index);
 			}
-		};
+		}
 
 		/**
 		 * Destroy the current instance of the slider (revert everything back to original state)
@@ -1371,7 +1369,7 @@
 			if(slider.controls.autoEl) slider.controls.autoEl.remove();
 			clearInterval(slider.interval);
 			if(slider.settings.responsive) $(window).unbind('resize', resizeWindow);
-		};
+		}
 
 		/**
 		 * Reload the slider (revert all DOM changes, and re-initialize)
@@ -1380,12 +1378,12 @@
 			if (settings != undefined) options = settings;
 			el.destroySlider();
 			init();
-		};
+		}
 
 		init();
 
 		// returns the current jQuery object
 		return this;
-	};
+	}
 
 })(jQuery);
