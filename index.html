@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>bxSlider Experiments</title>
+	<link rel="stylesheet" href="normalize.css" media="all" />
+	<link rel="stylesheet" href="jquery.bxslider.css" media="all" />
+	<script src="jquery.min.js"></script>
+	<script src="jquery.bxslider.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#slider').bxSlider({
+				'auto':true,
+				'mode':'fade',
+				'fadeType':'zoom'
+			});
+		});
+	</script>
+	<style>
+		html {
+			font-family: sans-serif;
+			font-size: 75%;
+		}
+		
+		body {
+			padding: 2em;
+		}
+		
+		* {
+			box-sizing: border-box;
+		}
+		
+		.bx-wrapper .bx-viewport {
+			/* we're setting border-box
+			No need for left positioning
+			*/
+			left: 0;
+		}
+		
+		.container {
+			margin-left: auto;
+			margin-right: auto;
+			max-width: 1200px;
+		}
+		
+		#slider {
+			float: left;
+			margin: 0;
+			padding: 0;
+		}
+		
+		#slider img {
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<section class="container">
+	<h1>bxSlider zoom-fade effect demo</h1>
+	<ul id="slider">
+		<li><a href="https://www.flickr.com/photos/idhren/15488418395" title="october is pretty8 by Maria Morri, on Flickr"><img src="https://farm3.staticflickr.com/2945/15488418395_d3d2bfc6ab_b.jpg"  alt="october is pretty8"></a></li>
+		<li><a href="https://www.flickr.com/photos/idhren/15301704180" title="october is pretty9 by Maria Morri, on Flickr"><img src="https://farm4.staticflickr.com/3943/15301704180_75595c4927_b.jpg" alt="october is pretty9"></a></li>
+		<li><a href="https://www.flickr.com/photos/idhren/15301843547" title="october is pretty10 by Maria Morri, on Flickr"><img src="https://farm6.staticflickr.com/5612/15301843547_86bda64dfc_b.jpg" alt="october is pretty10"></a></li>
+		<li><a href="https://www.flickr.com/photos/idhren/15465302466" title="october is pretty11 by Maria Morri, on Flickr"><img src="https://farm6.staticflickr.com/5599/15465302466_e919ca5a17_b.jpg" alt="october is pretty11"></a></li>
+	</ul>
+	</section>
+</body>
+</html>
