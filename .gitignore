@@ -1,5 +1,9 @@
 jquery.bxslider.zip
+jscs.report.txt
 bower_components
 experiment
+.DS_Store
+/node_modules
+/docs/
 .project
 .settings

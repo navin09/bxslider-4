@@ -1,25 +1,32 @@
 #bxSlider 4.2.5
 ##The fully-loaded, responsive jQuery content slider
 
-**New:** Added "zoom-fade" effect to the original bxSlider 
+###Why should I use this slider?
+* Fully responsive - will adapt to any device
+* Horizontal, vertical, and fade modes
+* Slides can contain images, video, or HTML content
+* Full callback API and public methods
+* Small file size, fully themed, simple to implement
+* Browser support: Firefox, Chrome, Safari, iOS, Android, IE7+
+* Tons of configuration options
 
-**[Demo](http://navin09.github.com/bxslider-4 "Demo")**
+For complete documentation, tons of examples, and a good time, visit:
 
-*Note: Only works in browsers that support CSS3 transforms*
+[http://bxslider.com](http://bxslider.com)
 
-##How to use
+Written by: Steven Wanderski - [http://stevenwanderski.com](http://stevenwanderski.com)
 
-Three new options have been added
+###License
+Released under the MIT license - http://opensource.org/licenses/MIT
 
-**fadeType**
+Let's get on with it!
 
-*'normal': don't change default behavior; 'zoom': use zoom-fade*
+##Installation
 
+###Step 1: Link required files
 
-    default: 'normal'
-    options: 'normal', 'zoom'
+First and most important, the jQuery library needs to be included (no need to download - link directly from Google). Next, download the package from this site and link the bxSlider CSS file (for the theme) and the bxSlider Javascript file.
 
-=======
 ```html
 <!-- jQuery library (served from Google) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -29,29 +36,61 @@ Three new options have been added
 <link href="/lib/jquery.bxslider.css" rel="stylesheet" />
 ```
 
-**zoomDuration**
+###Step 2: Create HTML markup
 
-*Duration of the zoom animation in seconds. Only effective for values between 0 & 1*
+Create a `<ul class="bxslider">` element, with a `<li>` for each slide. Slides can contain images, video, or any other HTML content!
 
+```html
+<ul class="bxslider">
+  <li><img src="/images/pic1.jpg" /></li>
+  <li><img src="/images/pic2.jpg" /></li>
+  <li><img src="/images/pic3.jpg" /></li>
+  <li><img src="/images/pic4.jpg" /></li>
+</ul>
+```
 
-    default: 1 
+###Step 3: Call the bxSlider
 
-=======
 Call .bxSlider() on `<ul class="bxslider">`. Note that the call must be made inside of a $(document).ready() call, or the plugin will not work!
 
-**zoomToSize**
+```javascript
+$(document).ready(function(){
+  $('.bxslider').bxSlider();
+});
+```
 
-*A value between 1 & 2	 to scale the object by, with 1 representing 0% and 2 representing 100%*
+##Configuration options
 
+###General
 
-    default: 2
+**mode**
+Type of transition between slides
+```
+default: 'horizontal'
+options: 'horizontal', 'vertical', 'fade'
+```
 
+**speed**
+Slide transition duration (in ms)
+```
+default: 500
+options: integer
+```
 
-##Original Project
+**slideMargin**
+Margin between each slide
+```
+default: 0
+options: integer
+```
 
-[https://github.com/stevenwanderski/bxslider-4](https://github.com/stevenwanderski/bxslider-4 "bxSlider 4")
+**startSlide**
+Starting slide index (zero-based)
+```
+default: 0
+options: integer
+```
 
-=======
 **randomStart**
 Start slider on a random slide
 ```
